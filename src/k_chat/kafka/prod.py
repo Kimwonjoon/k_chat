@@ -14,9 +14,9 @@ for i in tqdm(range(10)):
     data = {'str' : 'value' + str(i)}
     # send('지정 토픽명', value = 메시지값)
     producer.send('topic1', value = data)
-    time.sleep(1)
     # 종료 구문
     producer.flush()
+    time.sleep(0.1)
 
 end = time.time() # 끝나는 시간 확
 print(f"DONE : {end - start}")

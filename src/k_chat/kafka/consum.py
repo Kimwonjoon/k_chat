@@ -20,20 +20,22 @@ consumer = KafkaConsumer(
         #"topic1",
         bootstrap_servers = ["localhost:9092"],
         value_deserializer = lambda x : loads(x.decode('utf-8')),
-        consumer_timeout_ms=7000,
+        consumer_timeout_ms=5000,
         # 최근에 돌린 offset들을 가져온다.
         #auto_offset_reset="earliest" if saved_offset is None else "none",
         #auto_offset_reset="latest",
         group_id = "fbi",
-        enable_auto_commit=True,
+        enable_auto_commit=False,
 )
 
 print('[START] Consumer')
 
-if saved_offset is not None:
-    p = TopicPartition('topic1', 0)
-    consumer.assign([p])
+p = TopicPartition('topic1', 0)
+consumer.assign([p])
+if saved_offset is not None: # 파일이 있는 경우
     consumer.seek(p, saved_offset)
+else: # 파일이 없는 경우
+    consumer.seek_to_beginning(p)
 
 # 받은 메시지들 출력
 for msg in consumer:
