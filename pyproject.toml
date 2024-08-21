@@ -1,0 +1,26 @@
+[project]
+name = "k_chat"
+version = "0.1.0"
+description = "KAFKA CHAT"
+authors = [
+    {name = "Kimwonjoon", email = "kimpass189@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.8"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=8.3.2",
+]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+
+[project.scripts]
+kchat-ping = 'k_chat.cli:ping'
