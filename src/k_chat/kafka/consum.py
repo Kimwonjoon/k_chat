@@ -18,7 +18,7 @@ saved_offset = read_offset()
 # KafkaConsumer("받을토픽", bootstrap_servers = ["원하는 로컬"], value_deserializer = json 받는거, consumer_timeout_ms=5000 이건 자유)
 consumer = KafkaConsumer(
         #"topic1",
-        bootstrap_servers = ["localhost:9092"],
+        bootstrap_servers = ["172.17.0.1:9092"],
         value_deserializer = lambda x : loads(x.decode('utf-8')),
         consumer_timeout_ms=5000,
         # 최근에 돌린 offset들을 가져온다.

@@ -4,7 +4,7 @@ import json
 from tqdm import tqdm
 
 # KafkaProducer(bootstrap_servers=["원하는 localhost"])
-producer = KafkaProducer(bootstrap_servers=['localhost:9092'],
+producer = KafkaProducer(bootstrap_servers=['172.17.0.1:9092'],
         value_serializer = lambda x : json.dumps(x).encode('utf-8'))
 # json 형식을 읽을때는 직렬?로 읽어줘야함
 
