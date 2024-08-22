@@ -1,9 +1,10 @@
 from kafka import KafkaProducer
 from json import dumps
 import time
+from datetime import datetime
 
 p = KafkaProducer(
-        bootstrap_servers=['localhost:9092'],
+        bootstrap_servers=['13.125.118.73:9092'],
         value_serializer = lambda x : dumps(x).encode('utf-8'),
         )
 
@@ -14,8 +15,8 @@ while True:
     msg = input("You : ")
     if msg.lower() == "exit":
         break
-    data = {'message' : msg, 'time' : time.time()}
-    p.send('chat', value = data)
+    data = {'sender' : '김원준', 'message' : msg, 'time' : datetime.today().strftime("%Y-%m-%d %H:%M:%S")}
+    p.send('input', value = data)
     p.flush()
 
 print("채팅 종료")
