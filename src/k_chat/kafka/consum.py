@@ -30,7 +30,7 @@ consumer = KafkaConsumer(
 
 print('[START] Consumer')
 
-p = TopicPartition('topic1', 0)
+p = TopicPartition('test-gzip-100', 0)
 consumer.assign([p])
 if saved_offset is not None: # 파일이 있는 경우
     consumer.seek(p, saved_offset)
