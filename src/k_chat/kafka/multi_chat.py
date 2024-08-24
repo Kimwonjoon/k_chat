@@ -5,7 +5,7 @@ import threading
 
 def produc():
     p = KafkaProducer(
-        bootstrap_servers=['13.125.118.73:9092'],
+        bootstrap_servers=['172.17.0.1:9092'],
         value_serializer = lambda x : dumps(x).encode('utf-8'),
         )
     print("채팅 프로그램 - 메시지 발신자")
@@ -26,7 +26,7 @@ def produc():
 def consum():
     consumer = KafkaConsumer(
         'input',
-        bootstrap_servers = ["ec2-13-125-118-73.ap-northeast-2.compute.amazonaws.com:9092"],
+        bootstrap_servers = ["172.17.0.1:9092"],
         auto_offset_reset="earliest",
         enable_auto_commit=True,
         group_id='chat_group',
@@ -49,6 +49,6 @@ consumer = threading.Thread(target=consum)
 producer.start()
 consumer.start()
 
-producer.join()
-consumer.join()
+#producer.join()
+#consumer.join()
 
