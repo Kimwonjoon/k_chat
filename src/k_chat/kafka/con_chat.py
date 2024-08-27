@@ -2,11 +2,11 @@ from kafka import KafkaConsumer
 from json import loads
 
 consumer = KafkaConsumer(
-        'mammamia3',
+        'mammamia7',
         bootstrap_servers = ["ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092"],
         auto_offset_reset="earliest",
-        enable_auto_commit=True,
-        group_id='chat_group1',
+#        enable_auto_commit=True,
+#        group_id='chat_group1',
         value_deserializer = lambda x : loads(x.decode('utf-8'))
         )
 print("채팅 프로그램 - 메시지 수신")
