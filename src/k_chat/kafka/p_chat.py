@@ -4,7 +4,7 @@ import time
 from datetime import datetime
 
 p = KafkaProducer(
-        bootstrap_servers=['13.125.118.73:9092'],
+        bootstrap_servers=['ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092'],
         value_serializer = lambda x : dumps(x).encode('utf-8'),
         )
 
@@ -16,7 +16,7 @@ while True:
     if msg.lower() == "exit":
         break
     data = {'sender' : '김원준', 'message' : msg, 'time' : datetime.today().strftime("%Y-%m-%d %H:%M:%S")}
-    p.send('input', value = data)
+    p.send('mammamia3', value = data)
     p.flush()
 
 print("채팅 종료")

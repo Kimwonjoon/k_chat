@@ -4,7 +4,7 @@ import json
 from tqdm import tqdm
 
 # KafkaProducer(bootstrap_servers=["원하는 localhost"])
-producer = KafkaProducer(bootstrap_servers=['172.17.0.1:9092'],
+producer = KafkaProducer(bootstrap_servers=['ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092'],
         value_serializer = lambda x : json.dumps(x).encode('utf-8'),
         #compression_type='gzip',
         batch_size=100)
@@ -15,7 +15,7 @@ start = time.time() # 시작 시간 보려고
 for i in tqdm(range(10000)):
     data = {'str' : 'value' + str(i)}
     # send('지정 토픽명', value = 메시지값)
-    producer.send('test-gzip-100', value = data)
+    producer.send('mammamia', value = data)
     # 종료 구문
     producer.flush()
     time.sleep(0.001)

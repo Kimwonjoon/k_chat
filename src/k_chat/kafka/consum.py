@@ -18,19 +18,19 @@ saved_offset = read_offset()
 # KafkaConsumer("받을토픽", bootstrap_servers = ["원하는 로컬"], value_deserializer = json 받는거, consumer_timeout_ms=5000 이건 자유)
 consumer = KafkaConsumer(
         #"topic1",
-        bootstrap_servers = ["172.17.0.1:9092"],
+        bootstrap_servers = ["ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092"],
         value_deserializer = lambda x : loads(x.decode('utf-8')),
         consumer_timeout_ms=5000,
         # 최근에 돌린 offset들을 가져온다.
         #auto_offset_reset="earliest" if saved_offset is None else "none",
         #auto_offset_reset="latest",
-        group_id = "fbi",
+        group_id = "chat_group",
         enable_auto_commit=False,
 )
 
 print('[START] Consumer')
 
-p = TopicPartition('test-gzip-100', 0)
+p = TopicPartition('mammamia', 0)
 consumer.assign([p])
 if saved_offset is not None: # 파일이 있는 경우
     consumer.seek(p, saved_offset)
