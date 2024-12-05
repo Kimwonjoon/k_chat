@@ -1,11 +1,14 @@
 [project]
 name = "k_chat"
-version = "0.1.0"
+version = "0.2.0"
 description = "KAFKA CHAT"
 authors = [
     {name = "Kimwonjoon", email = "kimpass189@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "kafka-python>=2.0.2",
+    "tqdm>=4.66.5",
+]
 requires-python = ">=3.8"
 readme = "README.md"
 license = {text = "MIT"}
