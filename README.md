@@ -1,5 +1,5 @@
 # k_chat
-
+AWS EC2를 통한 Kafka 채팅 프로그램 실습입니다.
 ## Consumer
 ```bash
 $ python src/k_chat/kafka/con_chat.py
